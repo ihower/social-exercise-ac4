@@ -8,6 +8,12 @@
 </head>
 <body>
 
+<% if current_user %>
+  <%= link_to "登出", auth_signout_path, :method => :post %>
+<% else %>
+  <a href="/auth/facebook">Facebook 登入</a>
+<% end %>
+
 <%= yield %>
 
 </body>

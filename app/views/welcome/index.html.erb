@@ -1,0 +1,10 @@
+<h1>Hi!</h1>
+
+<% if current_user %>
+
+  已登入: <%= current_user.name %>
+  <%= image_tag( current_user.fb_image ) %>
+
+<% else %>
+  未登入
+<% end %>
