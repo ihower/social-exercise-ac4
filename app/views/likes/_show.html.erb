@@ -1,0 +1,11 @@
+Likes: <%= photo.likes_count %>
+
+<% photo.like_users.each do |u| %>
+  <%= link_to u.name, user_path(u) %>
+<% end %>
+
+<% if like %>
+  <%= link_to "-1", photo_like_path(photo, like), :method => :delete, :remote => true %>
+<% else %>
+ <%= link_to "+1", photo_likes_path(photo), :method => :post, :remote => true %>
+<% end %>
