@@ -7,6 +7,7 @@ class Comment < ActiveRecord::Base
 
   def notify!
     self.photo.subscribed_users.each do |user|
+      next if user == self.user
       UserMailer.notify_comment(user, self).deliver_later!
     end
   end
