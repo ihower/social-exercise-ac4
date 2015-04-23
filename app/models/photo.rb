@@ -2,6 +2,8 @@ class Photo < ActiveRecord::Base
 
   belongs_to :creator, :class_name => "Creator", :foreign_key => "user_id"
 
+  has_many :comments
+
   has_many :likes
   has_many :like_users, :through => :likes, :source => "user"
 

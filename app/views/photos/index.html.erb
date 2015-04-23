@@ -20,5 +20,24 @@
     <% end %>
   </div>
 
+  <div id="photo-comments-<%= photo.id %>">
+    <ul>
+    <% photo.comments.each do |comment| %>
+      <li>
+        <%= comment.content %>
+        by
+        <%= link_to comment.user.name, user_path(comment.user) %>
+        at
+        <%= comment.created_at.to_s(:short) %>
+      </li>
+    <% end %>
+    </ul>
+  </div>
+
+  <%= form_for Comment.new, :url => photo_comments_path(photo) do |f| %>
+    <%= f.text_field :content %>
+    <%= f.submit %>
+  <% end %>
+
   <hr>
 <% end %>

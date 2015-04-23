@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post '/auth/signout' => "sessions#destroy"
 
   resources :photos do
+    resources :comments
     resources :likes
 
     member do
