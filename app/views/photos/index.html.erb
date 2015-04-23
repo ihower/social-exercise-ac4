@@ -1,12 +1,23 @@
-
-
 <p><%= link_to "Upload Photo", new_photo_path %></p>
-
 
 <% @photos.each do |photo| %>
 
   <%= photo.title %>
   <%= link_to image_tag(photo.image.url(:thumb)), photo.image.url, :target => "_blank"  %>
+
+  Likes: <%= photo.likes_count %>
+
+  <% photo.like_users.each do |u| %>
+    <%= link_to u.name, user_path(u) %>
+  <% end %>
+
+  <% like = photo.find_like_by_user(current_user) %>
+
+  <% if like %>
+    <%= link_to "-1", photo_like_path(photo, like), :method => :delete %>
+  <% else %>
+   <%= link_to "+1", photo_likes_path(photo), :method => :post %>
+  <% end %>
 
   <hr>
 <% end %>

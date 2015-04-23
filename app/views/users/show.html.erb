@@ -1,0 +1,9 @@
+<%= @user.name %>
+
+<h2>Like photos</h2>
+
+<% @user.like_photos.each do |photo| %>
+
+  <%= photo.title %>
+
+<% end %>
