@@ -5,5 +5,7 @@ class User < ActiveRecord::Base
   has_many :likes
   has_many :like_photos, :through => :likes, :source => "photo"
 
+  has_many :subscriptions
+  has_many :subscribed_photos, :through => :subscriptions, :source => "photo"
 
 end

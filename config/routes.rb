@@ -7,6 +7,11 @@ Rails.application.routes.draw do
 
   resources :photos do
     resources :likes
+
+    member do
+      post :subscribe
+      post :unsubscribe
+    end
   end
 
   resources :users

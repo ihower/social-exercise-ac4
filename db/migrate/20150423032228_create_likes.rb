@@ -10,7 +10,7 @@ class CreateLikes < ActiveRecord::Migration
 
     add_column :photos, :likes_count, :integer, :default => 0
 
-    # add_index :likes, [:photo_id, :user_id], :unique => true
+    add_index :likes, [:photo_id, :user_id], :unique => true
 
   end
 end

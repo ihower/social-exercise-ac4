@@ -5,10 +5,19 @@
   <%= photo.title %>
   <%= link_to image_tag(photo.image.url(:thumb)), photo.image.url, :target => "_blank"  %>
 
-  <% like = photo.find_like_by_user(current_user) %>
-
   <div id="photo-like-<%= photo.id %>">
-  <%= render :partial => "likes/show", :locals => { :photo => photo, :like => like } %>
+    <% like = photo.find_like_by_user(current_user) %>
+    <%= render :partial => "likes/show", :locals => { :photo => photo, :like => like } %>
+  </div>
+
+  <div id="photo-subscription-<%= photo.id %>">
+    <% subscription = photo.find_subscription_by_user(current_user) %>
+
+    <% if subscription %>
+     <%= link_to "取消訂閱", unsubscribe_photo_path(photo), :method => :post %>
+    <% else %>
+      <%= link_to "訂閱", subscribe_photo_path(photo), :method => :post %>
+    <% end %>
   </div>
 
   <hr>
