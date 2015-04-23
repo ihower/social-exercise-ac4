@@ -1,5 +1,12 @@
-<h1>UserMailer#notify_comment</h1>
+<p>Hi, <%= @user.name %></p>
 
 <p>
-  <%= @greeting %>, find me in app/views/user_mailer/notify_comment.html.erb
+  有新留言給 <%= link_to @photo.title, root_url %>:
+
+  <%#= image_tag( @photo.image.url ) # need abs url %>
+
+</p>
+
+<p>
+  <%= @comment.user.name %> 說: <%= @comment.content %>
 </p>

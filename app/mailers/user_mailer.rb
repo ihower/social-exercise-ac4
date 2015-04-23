@@ -5,10 +5,12 @@ class UserMailer < ApplicationMailer
   #
   #   en.user_mailer.notify_comment.subject
   #
-  def notify_comment(user)
-    @greeting = "Hi"
+  def notify_comment(user, comment)
+    @user = user
+    @photo = comment.photo
+    @comment = comment
 
-    mail to: user.email, :subject => "Social App test email"
+    mail to: @user.email, :subject => "New comment to #{@photo.title}"
   end
 
 end

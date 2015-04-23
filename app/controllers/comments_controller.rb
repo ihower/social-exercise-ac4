@@ -7,6 +7,8 @@ class CommentsController < ApplicationController
 
     @comment.save!
 
+    @comment.notify!
+
     redirect_to root_url
   end
 

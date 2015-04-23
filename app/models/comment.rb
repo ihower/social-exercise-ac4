@@ -5,4 +5,10 @@ class Comment < ActiveRecord::Base
   belongs_to :photo
   belongs_to :user
 
+  def notify!
+    self.photo.subscribed_users.each do |user|
+      UserMailer.notify_comment(user, self).deliver_later!
+    end
+  end
+
 end
