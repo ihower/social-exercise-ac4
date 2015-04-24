@@ -14,11 +14,11 @@ class Photo < ActiveRecord::Base
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   def find_like_by_user(user)
-    self.likes.where( :user_id => user.id ).first
+    user && self.likes.where( :user_id => user.id ).first
   end
 
   def find_subscription_by_user(user)
-    self.subscriptions.where( :user_id => user.id ).first
+    user && self.subscriptions.where( :user_id => user.id ).first
   end
 
 end
